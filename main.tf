@@ -1,5 +1,16 @@
+# configured aws provider with proper credentials
 provider "aws" {
-  region = "us-east-1"  
+  region = "us-east-1"
+  profile= "samuel"
+}
+
+# Create an S3 bucket for MongoDB backups 
+terraform {
+  backend "s3" {
+    bucket = "samdmg.click"
+    region = "us-east-1"
+    profile = "samuel"
+  }
 }
 
 resource "aws_instance" "mongodb_instance" {
